@@ -133,10 +133,6 @@ static int rm57l8xx_read_part_info(struct flash_bank *bank)
 	struct tms470_flash_bank *rm57l8xx_info = bank->driver_priv;
 	struct target *target = bank->target;
 	uint32_t device_ident_reg;
-	uint32_t silicon_version;
-	uint32_t technology_family;
-	uint32_t rom_flash;
-	uint32_t part_number;
 	const char *part_name;
 
 	/* we shall not rely on the caller in this test, this function allocates memory,
@@ -153,11 +149,6 @@ static int rm57l8xx_read_part_info(struct flash_bank *bank)
 		LOG_WARNING("Cannot identify target as a RM57L8xx family.");
 		return ERROR_FLASH_OPERATION_FAILED;
 	}
-
-	silicon_version = (device_ident_reg >> 12) & 0xF;
-	technology_family = (device_ident_reg >> 11) & 1;
-	rom_flash = (device_ident_reg >> 10) & 1;
-	part_number = (device_ident_reg >> 3) & 0x1f; // Revision of the Device
 
     uint32_t version = (device_ident_reg >> 3) & 0x1f;
     uint32_t ram_ecc = (device_ident_reg >> 8) & 1;

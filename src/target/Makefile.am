@@ -97,6 +97,7 @@ ARM_DEBUG_SRC = \
 	%D%/arm_disassembler.c \
 	%D%/arm_simulator.c \
 	%D%/arm_semihosting.c \
+	%D%/arm_aapcs.c \
 	%D%/arm_adi_v5.c \
 	%D%/arm_dap.c \
 	%D%/armv7a_cache.c \
